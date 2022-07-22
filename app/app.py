@@ -7,6 +7,7 @@ from sqlalchemy import create_engine
 import urllib
 import pyodbc
 from clases import producto
+from clases import pedido
 app= Flask(__name__)
 
 #engine= sa.create_engine('mssql+pyodbc://user:password@server/database')
@@ -214,7 +215,26 @@ def gestionCarta():
 
 @app.route('/ADMIN/listaPedidos.html/')
 def listaPedidos():
-    return render_template('/ADMIN/listaPedidos.html')
+    pedidos={} 
+    print('listaPedidos')
+    try:
+        sql="SELECT DetallePedido.IdPedido, Usuario.NombreUsuario, DetallePedido.CantidadProducto, DetallePedido.TotalPrecio, Pedido.FechaPedido, Pedido.EstadoPedido  FROM Usuario INNER JOIN Pedido ON Usuario.IdUsuario = Pedido.IdUsuario INNER JOIN DetallePedido ON Pedido.IdPedido = DetallePedido.IdPedido"
+        result= engine.execute(sql)
+        
+        data_pedido=[]
+        for row in result:
+            print("mediccccccccc")
+            data_pedido.append(Pedido(row['IdPedido'], row['NombreUsuario'], row['CantidadProducto'], 
+            row['TotalPrecio'], row['FechaPedido'], row['EstadoPedido']))
+
+        for r in data_pedido:
+            print(r)
+        pedidos['mensaje']= 'Existo!!!'
+    except Exception as ex:
+        print('Error ...')
+        pedidos['mensaje']= 'Error ...'
+
+    return render_template('/ADMIN/listaPedidos.html', data_pedido= data_pedido)
 
 def totalCarrtio():
     total= 0

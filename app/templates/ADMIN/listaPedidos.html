@@ -147,94 +147,21 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            {% for p in data_pedido %} 
                                             <tr>
                                                 <td>A. Barrientos, Paul Jimmy</td>
                                                 <td>3</td>
                                                 <td>102.66</td>
                                                 <td>15/01/2020</td>
-                                                <td>
-                                                    <div class="form-group">
-                                                        <select class="form-control">
-                                                            <option>---Seleccione---</option>
-                                                            <option>Pendiente</option>
-                                                            <option>Entregado</option>
-                                                            <option>Cancelado</option>
-                                                        </select>
-                                                    </div>
-
-                                                </td>
+                                                <td>Pendiente</td>                                    
                                                 <td>
                                                     <a href="detallePedido.html"
                                                         class="btn btn-warning px-5 text-white"> Ver detalle</a>
                                                 </td>
 
                                             </tr>
-                                            <tr>
-                                                <td>A. Barrientos, Paul Jimmy</td>
-                                                <td>3</td>
-                                                <td>102.66</td>
-                                                <td>15/01/2020</td>
-                                                <td>
-                                                    <div class="form-group">
-                                                        <select class="form-control">
-                                                            <option>---Seleccione---</option>
-                                                            <option>Pendiente</option>
-                                                            <option>Entregado</option>
-                                                            <option>Cancelado</option>
-                                                        </select>
-                                                    </div>
-
-                                                </td>
-                                                <td>
-                                                    <a href="detallePedido.html"
-                                                        class="btn btn-warning px-5 text-white"> Ver detalle</a>
-                                                </td>
-
-                                            </tr>
-                                            <tr>
-                                                <td>A. Barrientos, Paul Jimmy</td>
-                                                <td>3</td>
-                                                <td>102.66</td>
-                                                <td>15/01/2020</td>
-                                                <td>
-                                                    <div class="form-group">
-                                                        <select class="form-control">
-                                                            <option>---Seleccione---</option>
-                                                            <option>Pendiente</option>
-                                                            <option>Entregado</option>
-                                                            <option>Cancelado</option>
-                                                        </select>
-                                                    </div>
-
-                                                </td>
-                                                <td>
-                                                    <a href="detallePedido.html"
-                                                        class="btn btn-warning px-5 text-white"> Ver detalle</a>
-                                                </td>
-
-                                            </tr>
-                                            <tr>
-                                                <td>A. Barrientos, Paul Jimmy</td>
-                                                <td>3</td>
-                                                <td>102.66</td>
-                                                <td>15/01/2020</td>
-                                                <td>
-                                                    <div class="form-group">
-                                                        <select class="form-control">
-                                                            <option>---Seleccione---</option>
-                                                            <option>Pendiente</option>
-                                                            <option>Entregado</option>
-                                                            <option>Cancelado</option>
-                                                        </select>
-                                                    </div>
-
-                                                </td>
-                                                <td>
-                                                    <a href="detallePedido.html"
-                                                        class="btn btn-warning px-5 text-white"> Ver detalle</a>
-                                                </td>
-
-                                            </tr>
+                                            {% endfor %}
+                                            
 
                                         </tbody>
                                     </table>
