@@ -30,9 +30,7 @@ def index():
 def login():
     return render_template('login.html',  carrito= carrito, carrito_size= len(carrito), totalCompra= totalCarrtio())
 
-@app.route('/insertarPlatillo.html/')
-def insertarPlatillo():
-    return render_template('insertarPlatillo.html')
+
 
 @app.route('/nuestra-carta.html/')
 def carta():
@@ -165,6 +163,58 @@ def pagar_cuenta():
             carrito.clear()
             #flash("glorioso, usuario registrado")
     return redirect(url_for('shopping'))
+
+
+@app.route('/ADMIN/agregarPlatillo.html/')
+def menuInsertarPlatillo():
+    return render_template('/ADMIN/agregarPlatillo.html')
+
+
+@app.route('/insertarProducto', methods= ['POST'])
+def agregarPlatillo():
+    connection = engine.connect()
+    consult = connection.begin()
+    if request.method == 'POST':
+        print("==☺o☺♂☺♂o==")
+        _nombrePlatillo= request.form['nombrePlatillo']
+        _descripcionProducto= request.form['descripcionProducto']
+        _precioProducto= request.form['precioProducto']
+        _categoriaProducto= request.form['categoriaProducto']
+        print('.◘◘', _categoriaProducto)
+        sql="INSERT INTO Producto(NombreProducto, DescripcionProducto,PrecioProducto, CategoriaProducto, ImagenProducto, FechaRegistroProducto) SELECT '"+_nombrePlatillo+"', '"+_descripcionProducto+"', "+str(_precioProducto)+", '"+_categoriaProducto+"', BulkColumn, '2008-11-11'  FROM Openrowset( Bulk 'C://Users//Dark Wizard//Desktop//opencv//PYTHON FLASKy//Pagina-WEB-RC-flask//app//static//images//isaac.png', Single_Blob) as Imagen; "
+        print(sql)
+        connection.execute(sql)
+        consult.commit()
+        
+        
+            #flash("glorioso, usuario registrado")
+    return redirect(url_for('menuInsertarPlatillo'))
+
+@app.route('/ADMIN/gestionCarta.html/')
+def gestionCarta():
+    menu={} 
+    try:
+        sql="select IdProducto, NombreProducto, DescripcionProducto, PrecioProducto, CategoriaProducto, ImagenProducto, FechaRegistroProducto from Producto;"
+        result= engine.execute(sql)
+        print(result)
+        data_menu=[]
+        for row in result:
+            data_menu.append(Producto(row['IdProducto'], row['NombreProducto'], 
+            row['DescripcionProducto'], row['PrecioProducto'], row['CategoriaProducto'], 
+            row['ImagenProducto'], row['FechaRegistroProducto']))
+
+        for r in data_menu:
+            print(r)
+        menu['mensaje']= 'Existo!!!'
+        print(names)
+    except Exception as ex:
+        print('Error ...')
+        menu['mensaje']= 'Error ...'
+    return render_template('/ADMIN/gestionCarta.html', result= data_menu)
+
+@app.route('/ADMIN/listaPedidos.html/')
+def listaPedidos():
+    return render_template('/ADMIN/listaPedidos.html')
 
 def totalCarrtio():
     total= 0
