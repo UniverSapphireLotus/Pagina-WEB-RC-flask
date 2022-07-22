@@ -1,6 +1,8 @@
 from contextlib import redirect_stderr
 from urllib import request
+from clases.pedido import Pedido
 from clases.producto import Producto
+from clases.detallePedido import DetallePedido
 from flask import  Flask, render_template, jsonify, session, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy as sa
 from sqlalchemy import create_engine
@@ -49,7 +51,6 @@ def carta():
         for r in data_menu:
             print(r)
         menu['mensaje']= 'Existo!!!'
-        print(names)
     except Exception as ex:
         print('Error ...')
         menu['mensaje']= 'Error ...'
@@ -207,7 +208,6 @@ def gestionCarta():
         for r in data_menu:
             print(r)
         menu['mensaje']= 'Existo!!!'
-        print(names)
     except Exception as ex:
         print('Error ...')
         menu['mensaje']= 'Error ...'
@@ -235,6 +235,31 @@ def listaPedidos():
         pedidos['mensaje']= 'Error ...'
 
     return render_template('/ADMIN/listaPedidos.html', data_pedido= data_pedido)
+
+
+@app.route('/verDetallePedido', methods= ['POST'])
+def verDetallePedido():
+    pedidos={} 
+    IdPedido=request.form['IdPedido']
+    print('listaPedidos ', IdPedido)
+    try:
+        sql="DECLARE @Pedido INT SET @Pedido = {} SELECT DetallePedido.CantidadProducto, Producto.NombreProducto, Producto.PrecioProducto,  (DetallePedido.CantidadProducto*Producto.PrecioProducto) AS TotalPorPlatillo FROM DetallePedido INNER JOIN Producto ON DetallePedido.IdProducto = Producto.IdProducto WHERE DetallePedido.IdPedido = @Pedido".format(IdPedido)
+        result= engine.execute(sql)
+        
+        data_detallePedido=[]
+        for row in result:
+            print("mediccccccccc")
+            data_detallePedido.append(DetallePedido(row['CantidadProducto'], row['NombreProducto'], row['PrecioProducto'], 
+            row['TotalPorPlatillo']))
+
+        for r in data_detallePedido:
+            print(r)
+        pedidos['mensaje']= 'Existo!!!'
+    except Exception as ex:
+        print('Error ...')
+        pedidos['mensaje']= 'Error ...'
+
+    return render_template('/ADMIN/detallePedido.html', data_detallePedido= data_detallePedido)
 
 def totalCarrtio():
     total= 0

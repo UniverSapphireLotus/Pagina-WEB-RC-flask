@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Gestión de la Carta</title>
+    <title>Detalle pedidos</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -39,12 +39,36 @@
                 </li>
             </ul>
 
+            <!-- Right navbar links -->
+            <!--<ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="navbar-search" href="#" role="button">
+                <i class="fas fa-search"></i>
+            </a>
+            <div class="navbar-search-block">
+                <form class="form-inline">
+                    <div class="input-group input-group-sm">
+                        <input class="form-control form-control-navbar" type="search" placeholder="Search"
+                            aria-label="Search">
+                        <div class="input-group-append">
+                            <button class="btn btn-navbar" type="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                            <button class="btn btn-navbar" type="button" data-widget="navbar-search">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </li>
+    </ul>-->
         </nav>
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="index3.html" class="brand-link">
-                <img src="logo negativo.png" alt="RinconCuyTruchaLogo" class="brand-image img-circle elevation-3"
-                    style="opacity: .8">
+                <img src="logo negativo.png"
+                    alt="RinconCuyTruchaLogo" class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">Administración</span>
             </a>
 
@@ -77,14 +101,14 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="gestionCarta.html" class="nav-link">
+                            <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>Gestión de carta</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="listaPedidos.html" class="nav-link active">
+                            <a href="detallePedido.html" class="nav-link active">
                                 <i class="nav-icon fas fa-book"></i>
                                 <p>Historial de clientes</p>
                             </a>
@@ -118,7 +142,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-12 text-center">
-                            <h1>Lista Pedidos</h1>
+                            <h1>Detalle Pedidos</h1>
                         </div>
                     </div>
                 </div><!-- /.container-fluid -->
@@ -131,130 +155,82 @@
                         <div class="col-12">
                             <div class="card container">
                                 <div class="card-header">
-                                    <h3 class="card-title">Lista entregas</h3>
+                                    <h3 class="card-title"></h3>
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="table-responsive">
-                                    <table id="example1" class="table">
-                                        <thead class="table-dark">
-                                            <tr>
-                                                <th>Apellidos y Nombres</th>
-                                                <th>Productos</th>
-                                                <th>Total</th>
-                                                <th>Fecha</th>
-                                                <th>Estado</th>
-                                                <th>Detalle</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {% for p in data_pedido %} 
-                                            <tr>
-                                                <td>{{p.NombreUsuario}}</td>
-                                                <td>{{p.CantidadProducto}}</td>
-                                                <td>{{p.TotalPrecio}}</td>
-                                                <td>{{p.FechaPedido}}</td>
-                                                <td>{{p.EstadoPedido}}</td>                                    
-                                                
-                                                <form method="POST" action="/verDetallePedido">
-                                                    <td>
-                                                        <input type="hidden" name="IdPedido" value="{{ p.IdPedido}}"/>
-                                                        <button type="submit" class="btn btn-warning px-5 text-white">Ver detalle</button>
-                                                    </td>
-                                                </form>
-
-                                            </tr>
-                                            {% endfor %}
-                                            
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <!-- /.card-body -->
-                            </div>
-                            <!-- /.card -->
-                        </div>
-                        <!-- /.col -->
-                    </div>
-                    <!-- /.row -->
-                </div>
-                <!-- /.container-fluid -->
-            </section>
-
-            <!-- /.content -->
-        </div>
-        <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
-            <section class="content-header">
-                <div class="container-fluid">
-                    <div class="row mb-2">
-                        <div class="col-12 text-center">
-                            <h1>Clientes mas recurrentes</h1>
-                        </div>
-                    </div>
-                </div><!-- /.container-fluid -->
-            </section>
-
-            <!-- Main content -->
-            <section class="content">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card container">
-                                <div class="card-header">
-                                    <div class="d-flex">
-                                        <label for="" class="mx-4">Año: </label>
-                                        <div class="form-group">
-                                            <select class="form-control">
-                                                <option>2022</option>
-                                                <option>2021</option>
-                                                <option>2020</option>
-                                            </select>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <img src="logo positivo.png" alt="logo" class="img-fluid">
                                         </div>
-                                        <label for="" class="mx-4">Mes: </label>
-                                        <div class="form-group">
-                                            <select class="form-control">
-                                                <option>Enero</option>
-                                                <option>Febrero</option>
-                                                <option>Marzo</option>
-                                                <option>Abril</option>
-                                                <option>Mayo</option>
-                                                <option>Junio</option>
-                                                <option>Julio</option>
-                                                <option>Agosto</option>
-                                                <option>Septiembre</option>
-                                                <option>Octubre</option>
-                                                <option>Noviembre</option>
-                                                <option>Diciembre</option>
-                                            </select>
+                                        <div class="col-md-6">
+
+                                            <div class="">
+                                                <div class="text-center m-4 p-2 rounded-pill border border-dark">
+                                                    <p><span class="fw-bold text-uppercase">RUC N° </span> 207280569845
+                                                    </p>
+                                                    <p><span class="fw-bold text-uppercase">Boleta de venta
+                                                            electronica</span> </p>
+                                                    <p><span class="fw-bold text-uppercase"> B003-52</span></p>
+                                                </div>
+                                            </div>
+                                            <div class="">
+                                                <div class="text-center m-4 p-2 rounded-pill border border-dark">
+                                                    <p><span class="fw-bold text-uppercase">Fecha compra :</span>
+                                                        15/01/2020</p>
+                                                    <p><span class="fw-bold text-uppercase">Señor(a): </span> Aquiles
+                                                        Parado</p>
+                                                    <p><span class="fw-bold text-uppercase">DNI:</span> 96543217</p>
+                                                </div>
+                                            </div>
+
                                         </div>
                                     </div>
-                                </div>
-                                <!-- /.card-header -->
-                                <div class="table-responsive">
-                                    <table id="example1" class="table">
+                                    <table class="table">
                                         <thead class="table-dark">
                                             <tr>
-                                                <th>Apellidos y Nombres</th>
                                                 <th>Cantidad</th>
+                                                <th>Descripcion</th>
+                                                <th>P.U.</th>
                                                 <th>Total</th>
-                                                <th>Detalle</th>
+
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>A. Barrientos, Paul Jimmy</td>
-                                                <td>3</td>
-                                                <td>102.66</td>
-                                                <td>
-                                                    <a href="detallePedido.html"
-                                                        class="btn btn-warning px-5 text-white"> Ver detalle</a>
-
-                                                </td>
+                                                <td>1</td>
+                                                <td>Platillo 1</td>
+                                                <td>20.00</td>
+                                                <td>20.00</td>
 
                                             </tr>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Platillo 1</td>
+                                                <td>20.00</td>
+                                                <td>20.00</td>
 
+                                            </tr>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Platillo 1</td>
+                                                <td>20.00</td>
+                                                <td>20.00</td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Platillo 1</td>
+                                                <td>20.00</td>
+                                                <td>20.00</td>
+
+                                            </tr>
                                         </tbody>
                                     </table>
+
+                                </div>
+                                <div class="text-center p-3">
+                                    <button class="btn btn-success px-5 text-white">Descargar</button>
                                 </div>
                                 <!-- /.card-body -->
                             </div>
@@ -266,7 +242,6 @@
                 </div>
                 <!-- /.container-fluid -->
             </section>
-
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->

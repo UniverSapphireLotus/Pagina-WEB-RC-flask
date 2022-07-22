@@ -9,3 +9,4 @@ class Producto:
         self.ImagenProducto= ImagenProducto
         self.FechaRegistroProducto= FechaRegistroProducto
         self.cantidad= 1
+
