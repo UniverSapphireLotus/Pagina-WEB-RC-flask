@@ -148,7 +148,7 @@ def verificar_usuario():
         if _password==_password:
             print("ingresar")
             #flash("glorioso, usuario registrado")
-    return redirect(url_for('login'))
+    return redirect(url_for('index'))
 
 @app.route('/pagar')
 def pagar_cuenta():

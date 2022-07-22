@@ -77,7 +77,7 @@
                 {% for p in carrito %}
                 <li>
                   <div class="product-thumbnail">
-                    <img src="{{ url_for('static', filename= 'images/404.png')}}" alt="">
+                    <img src="{{p.ImagenProducto}}" alt="">
                   </div>
                   <div class="product-summary">
                     <a href="#">{{p.NombreProducto}}</a><span>${{p.PrecioProducto}}</span>
