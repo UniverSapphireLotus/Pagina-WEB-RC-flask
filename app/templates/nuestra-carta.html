@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Comet | Creative Multi-Purpose HTML Template</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href= "{{ url_for('static', filename= 'css/bundle.css')}}">
+  <link rel="stylesheet" href= "{{ url_for('static', filename= 'css/style.css')}}">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Halant:300,400" rel="stylesheet" type="text/css">
+  <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  <script>
+    (function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '../../../www.google-analytics.com/analytics.js', 'ga');
+    ga('create', 'UA-46276885-13', 'auto');
+    ga('send', 'pageview');
+  </script>
+</head>
+
+<body>
+  <!-- Preloader-->
+  <div id="loader">
+    <div class="centrize">
+      <div class="v-center">
+        <div id="mask">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Preloader-->
+  <!-- Navigation Bar-->
+  <header id="topnav">
+    <div class="container">
+      <!-- Logo container-->
+      <div class="logo">
+        <a href="index.html">
+          <img src="{{ url_for('static', filename= 'images/logo positivo.png')}}" alt="" class="logo-light">
+          <img src="{{ url_for('static', filename= 'images/logo negativo.png')}}" alt="" class="logo-dark">
+        </a>
+      </div>
+      <!-- End Logo container-->
+      <div class="menu-extras">
+        <div class="menu-item">
+          <!-- Shopping cart-->
+          <div class="cart">
+            <a href="#">
+              <i class="ti-bag"></i><span class="cart-number">{{ carrito_size }}</span>
+            </a>
+            <div class="shopping-cart">
+              <div class="shopping-cart-info">
+                <div class="row">
+                  <div class="col-xs-6">
+                    <h6 class="upper">Tu carrito</h6>
+                  </div>
+                  <div class="col-xs-6 text-right">
+                    <h6 class="upper">${{totalCompra}}</h6>
+                  </div>
+                </div>
+                <!-- end of row-->
+              </div>
+              <ul class="nav product-list">
+                {% for p in carrito %}
+                <li>
+                  <div class="product-thumbnail">
+                    <img src="{{ url_for('static', filename= 'images/404.png')}}" alt="">
+                  </div>
+                  <div class="product-summary">
+                    <a href="#">{{p.NombreProducto}}</a><span>${{p.PrecioProducto}}</span>
+                  </div>
+                </li>
+                {% endfor %}                
+              </ul>
+              <p><a href="#" class="btn btn-color btn-block btn-sm">Checkout</a>
+              </p>
+            </div>
+          </div>
+          <!-- End shopping cart-->
+        </div>
+        <div class="menu-item">
+          <!-- Shopping cart-->
+          <div class="cart">
+            <a href="#">
+              <i class="ti-user"></i>
+            </a>
+            <div class="shopping-cart">
+
+              <p><a href="login.html" class="btn btn-color-out btn-block btn-sm">Ingresar</a>
+              </p>
+              <p><a href="login.html" class="btn btn-color-out btn-block btn-sm">Registrarse</a>
+              </p>
+            </div>
+          </div>
+          <!-- End shopping cart-->
+        </div>
+        <div class="menu-item">
+          <!-- Mobile menu toggle-->
+          <a class="navbar-toggle">
+            <div class="lines">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </a>
+          <!-- End mobile menu toggle-->
+        </div>
+      </div>
+      <div id="navigation">
+        <!-- Navigation Menu-->
+        <ul class="navigation-menu">
+          <li><a href="#home" data-scroll="true">Inicio</a>
+          </li>
+          <li><a href="nuestra-carta.html" data-scroll="true">Nuestra carta</a>
+          </li>
+          <li><a href="nosotros.html" data-scroll="true">Nuestros locales</a>
+          </li>
+          <li><a href="nosotros.html" data-scroll="true">Nosotros</a>
+          </li>
+
+
+
+        </ul>
+        <!-- End navigation menu        -->
+      </div>
+    </div>
+  </header>
+  <!-- End Navigation Bar-->
+  <section class="page-title parallax">
+    <div data-parallax="scroll" data-image-src="images/shop/cuy_01.jpg" class="parallax-bg"></div>
+    <div class="parallax-overlay">
+      <div class="centrize">
+        <div class="v-center">
+          <div class="container">
+            <div class="title center">
+              <h1 class="upper">Nuestra carta</h1>
+              <h4>Disfruta de diveros platillos.</h4>
+              <hr>
+            </div>
+          </div>
+          <!-- end of container-->
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 hidden-sm hidden-xs">
+          <div class="sidebar">
+            <div class="widget">
+              <h6 class="upper">Categorias</h6>
+              <ul class="nav">
+                <li><a href="#">Paltillos tipicos</a>
+                </li>
+                <li><a href="#">Caja China</a>
+                </li>
+                <li><a href="#">Debidas</a>
+                </li>
+              </ul>
+            </div>
+            <!-- end of widget        -->
+            <div class="widget">
+              <h6 class="upper">Platillos populares</h6>
+              <ul class="nav product-list">
+                
+                <li>
+                  <div class="product-thumbnail">
+                    <img src="images/shop/chihcarron_01.jpg" alt="">
+                  </div>
+                  <div class="product-summary"><a href="#">Chihcarron de cerdo</a><span>$199.99</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="product-thumbnail">
+                    <img src="images/shop/chihcarron_01.jpg" alt="">
+                  </div>
+                  <div class="product-summary"><a href="#">Chihcarron de cerdo</a><span>$199.99</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="product-thumbnail">
+                    <img src="images/shop/chihcarron_01.jpg" alt="">
+                  </div>
+                  <div class="product-summary"><a href="#">Chihcarron de cerdo</a><span>$199.99</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <!-- end of widget          -->
+            <div class="widget">
+              <h6 class="upper">Buscar producto</h6>
+              <form>
+                <input type="text" placeholder="Search.." class="form-control">
+              </form>
+            </div>
+            <!-- end of widget        -->
+
+            <!-- end of widget      -->
+          </div>
+          <!-- end of sidebar-->
+        </div>
+        <div class="col-md-9">
+          <div class="shop-menu">
+            <div class="row">
+              <div class="col-sm-8">
+                <h6 class="upper">6 de 18 resultados</h6>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-select">
+                  <select name="type" class="form-control">
+                    <option selected="selected" value="">Ordenar por</option>
+                    <option value="">Nombre</option>
+                    <option value="">Precio</option>
+                    <option value="">Mas consumidos</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <!-- end of row-->
+          </div>
+          
+          <div class="container-fluid">
+            
+            <div class="row">
+            {% for p in result %} 
+              
+              <div class="col-sm-6">
+                <form method="POST" action="/add">
+                <div class="shop-product">
+                  <div class="product-thumb">
+                    <a href="#">
+                      <img src="{{ url_for('static', filename= 'images/404.png')}}" alt="">
+                    </a>
+                    
+                      <div class="product-overlay">
+                        <input type="hidden" name="idProducto" value="{{ p.IdProducto}}"/>
+                        <button type="submit" class="btn btn-color-out btn-sm">Agregar<i class="ti-bag"></i></button>
+                      </div>  
+                  </div>
+                    
+                    <div class="product-info">
+                      <h4 class="upper"><a href="#">{{p.NombreProducto}}</a></h4><span>{{p.PrecioProducto}}</span>
+                      <div class="save-product">
+                        <a href="#" type="submit"><i class="icon-heart"></i></a>
+                        
+                      </div>
+                    </div>                 
+                </div>
+                </form>
+              </div>
+              {% endfor %}
+              
+            </div>
+            <!-- end of row-->
+            <ul class="pagination">
+              <li><a href="#" aria-label="Previous"><span aria-hidden="true"><i class="ti-arrow-left"></i></span></a>
+              </li>
+              <li class="active"><a href="#">1</a>
+              </li>
+              <li><a href="#">2</a>
+              </li>
+              <li><a href="#">3</a>
+              </li>
+              <li><a href="#">4</a>
+              </li>
+              <li><a href="#">5</a>
+              </li>
+              <li><a href="#" aria-label="Next"><span aria-hidden="true"><i class="ti-arrow-right"></i></span></a>
+              </li>
+            </ul>
+            <!-- end of pagination-->
+          </div>
+        </div>
+      </div>
+      
+      <!-- end of row-->
+    </div>
+    <!-- end of container-->
+  </section>
+  <!-- Footer-->
+  <footer id="footer-widgets">
+    <div class="container">
+      <div class="go-top">
+        <a href="#top">
+          <i class="ti-arrow-up"></i>
+        </a>
+      </div>
+      <div class="row">
+        <div class="col-md-6 ov-h">
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="widget">
+                <h6 class="upper">Acerca de</h6>
+                <p>
+                  <span>999444000</span>
+                  <span>rincon_ct@gmail.com</span>
+                </p><a href="#" class="btn btn-color-out btn-sm">Escribenos!</a>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="widget">
+                <h6 class="upper">Ubicanos</h6>
+                <ul class="list-unstyled">
+                  <li>
+                    <a href="nosotros.html">Nuestros Locales</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-sm-4">
+
+
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-md-offset-2">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="widget">
+                <h6 class="upper">Suscribete</h6>
+                <p>Ingresa para saber las ultimas noticas.</p>
+                <div class="footer-newsletter">
+                  <form data-mailchimp="true" class="inline-form">
+                    <div class="input-group">
+                      <input type="email" name="email" placeholder="Tu email" class="form-control"><span
+                        class="input-group-btn"><button type="submit" data-loading-text="Loading..."
+                          class="btn btn-color">Suscribete</button></span>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end of row-->
+    </div>
+    <!-- end of container-->
+  </footer>
+  <footer id="footer">
+    <div class="container">
+      <div class="footer-wrap">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="copy-text">
+              <p><i class="icon-heart red mr-15"></i>© 2015 El Rincon del Cuy y la Trucha.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+
+          </div>
+          <div class="col-md-4">
+            <div class="footer-social">
+              <ul>
+                <li>
+                  <a target="_blank" href="#"><i class="ti-facebook"></i></a>
+                </li>
+                <li>
+                  <a target="_blank" href="#"><i class="ti-twitter-alt"></i></a>
+                </li>
+                <li>
+                  <a target="_blank" href="#"><i class="ti-instagram"></i></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- end of row-->
+      </div>
+    </div>
+    <!-- end of container-->
+  </footer>
+  <!-- end of footer-->
+  <script type="text/javascript" src="{{ url_for('static', filename= 'js/jquery.js')}}"></script>></script>
+  <script type="text/javascript" src="{{ url_for('static', filename= 'js/bundle.js')}}"></script>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename= 'js/main.js')}}"></script>
+</body>
+
+</html>
