@@ -92,42 +92,35 @@
                         data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                 with font-awesome or any other icon font library -->
+                <li class="nav-item">
+                    <a href="{{ url_for('index')}}" class="nav-link">
+                        <i class="nav-icon fas fa-chart-pie"></i>
+                        <p>Inicio</p>
+                    </a>
+
+                  </li>
                         <li class="nav-item">
-                            <a href="index.html" class="nav-link">
+                            <a href="{{ url_for('listaPedidos')}}" class="nav-link">
                                 <i class="nav-icon fas fa-chart-pie"></i>
-                                <p>Inicio</p>
+                                <p>Lista de pedidos</p>
                             </a>
 
                         </li>
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ url_for('gestionCarta')}}" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>Gestión de carta</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="detallePedido.html" class="nav-link active">
+                            <a href="{{ url_for('menuInsertarPlatillo')}}" class="nav-link active">
                                 <i class="nav-icon fas fa-book"></i>
-                                <p>Historial de clientes</p>
+                                <p>Agregar producto</p>
                             </a>
                         </li>
 
-                        <li class="nav-item mb-3">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-edit"></i>
-                                <p>Ajuste de contacto</p>
-                            </a>
-
-                        </li>
-
-                        <li class="nav-item border-top">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-sign-out-alt"></i>
-                                <p>Cerrar sesión</p>
-                            </a>
-                        </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->

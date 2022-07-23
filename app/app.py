@@ -3,6 +3,7 @@ from urllib import request
 from clases.pedido import Pedido
 from clases.producto import Producto
 from clases.detallePedido import DetallePedido
+from clases.user import Usuario
 from flask import  Flask, render_template, jsonify, session, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy as sa
 from sqlalchemy import create_engine
@@ -18,7 +19,10 @@ carrito= []
 carrito.clear()
 
 login=False
-admin=False
+admin=True
+idUsuario=0
+
+userLog= Usuario(0, 0, 0, 0)
 
 params = urllib.parse.quote_plus("DRIVER={SQL Server Native Client 11.0};"
                                  "SERVER=DESKTOP-GATG0PQ\SAKINIKAIDO;"
@@ -35,7 +39,7 @@ def index():
 
 @app.route('/login.html/')
 def login():
-    return render_template('login.html',  carrito= carrito, carrito_size= len(carrito), totalCompra= totalCarrtio())
+    return render_template('login.html',  carrito= carrito, carrito_size= len(carrito), totalCompra= totalCarrtio(), log= login, admin=admin)
 
 
 @app.route('/nuestra-carta.html/')
@@ -57,7 +61,7 @@ def carta():
     except Exception as ex:
         print('Error ...')
         menu['mensaje']= 'Error ...'
-    return render_template('nuestra-carta.html', result= data_menu, carrito= carrito, carrito_size= len(carrito), totalCompra= totalCarrtio())
+    return render_template('nuestra-carta.html', result= data_menu, carrito= carrito, carrito_size= len(carrito), totalCompra= totalCarrtio(), log= login, admin=admin)
 
 
 
@@ -82,11 +86,11 @@ def menu():
 
 @app.route('/nosotros.html/')
 def nosotros():
-    return render_template('nosotros.html',  carrito= carrito, carrito_size= len(carrito), totalCompra= totalCarrtio())
+    return render_template('nosotros.html',  carrito= carrito, carrito_size= len(carrito), totalCompra= totalCarrtio(), log= login, admin=admin)
 
 @app.route('/shop-cart.html/')
 def shopping():
-    return render_template('shop-cart.html',  carrito= carrito, carrito_size= len(carrito), totalCompra= totalCarrtio())
+    return render_template('shop-cart.html',  carrito= carrito, carrito_size= len(carrito), totalCompra= totalCarrtio(), log= login, admin=admin)
     #return redirect(url_for('nosotros'))
 
 @app.route('/add', methods= ['POST'])
@@ -146,9 +150,12 @@ def verificar_usuario():
         _password= request.form['password']
         print(_email, "--", _password)
         sql="select idUsuario, NombreUsuario,ContraseñaUsuario, EmailUsuario from Usuario where ContraseñaUsuario ="+ _email +"and EmailUsuario= " +_password+" ;"
+        result= engine.execute(sql)
+        for row in result:
+            Usuario=(row['idUsuario'], row['NombreUsuario'], row['ContraseñaUsuario'], row['EmailUsuario'])
 
 
-        if _password==_password:
+        if _password==passs:
             print("ingresar")
             #flash("glorioso, usuario registrado")
     return redirect(url_for('index'))
@@ -186,7 +193,7 @@ def agregarPlatillo():
         _precioProducto= request.form['precioProducto']
         _categoriaProducto= request.form['categoriaProducto']
         print('.◘◘', _categoriaProducto)
-        sql="INSERT INTO Producto(NombreProducto, DescripcionProducto,PrecioProducto, CategoriaProducto, ImagenProducto, FechaRegistroProducto) SELECT '"+_nombrePlatillo+"', '"+_descripcionProducto+"', "+str(_precioProducto)+", '"+_categoriaProducto+"', BulkColumn, '2008-11-11'  FROM Openrowset( Bulk 'C://Users//Dark Wizard//Desktop//opencv//PYTHON FLASKy//Pagina-WEB-RC-flask//app//static//images//isaac.png', Single_Blob) as Imagen; "
+        sql="INSERT INTO Producto(NombreProducto, DescripcionProducto,PrecioProducto, CategoriaProducto, ImagenProducto, FechaRegistroProducto) SELECT '"+_nombrePlatillo+"', '"+_descripcionProducto+"', "+str(_precioProducto)+", '"+_categoriaProducto+"', BulkColumn, '2008-11-11'  FROM Openrowset( Bulk 'C://Users//Dark Wizard//Desktop//opencv//PYTHON FLASKy//Pagina-WEB-RC-flask//app//static//images//kobeni-logo.png', Single_Blob) as Imagen; "
         print(sql)
         connection.execute(sql)
         consult.commit()
