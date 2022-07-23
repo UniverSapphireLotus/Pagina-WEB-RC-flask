@@ -49,7 +49,7 @@
     <div class="container">
       <!-- Logo container-->
       <div class="logo">
-        <a href="index.html">
+        <a href="{{ url_for('index')}}">
           <img src="{{ url_for('static', filename= 'images/logo positivo.png')}}" alt="" class="logo-light">
           <img src="{{ url_for('static', filename= 'images/logo negativo.png')}}" alt="" class="logo-dark">
         </a>
@@ -86,10 +86,11 @@
                 </li>
                 {% endfor %}                
               </ul>
-              <p><a href="#" class="btn btn-color btn-block btn-sm">Checkout</a>
+              <p><a href="{{ url_for('shopping')}}" class="btn btn-color btn-block btn-sm">Checkout</a>
               </p>
             </div>
           </div>
+
           <!-- End shopping cart-->
         </div>
         <div class="menu-item">
@@ -100,9 +101,9 @@
             </a>
             <div class="shopping-cart">
 
-              <p><a href="login.html" class="btn btn-color-out btn-block btn-sm">Ingresar</a>
+              <p><a href="{{ url_for('login')}}"class="btn btn-color-out btn-block btn-sm">Ingresar</a>
               </p>
-              <p><a href="login.html" class="btn btn-color-out btn-block btn-sm">Registrarse</a>
+              <p><a href="{{ url_for('login')}}" class="btn btn-color-out btn-block btn-sm">Registrarse</a>
               </p>
             </div>
           </div>
@@ -123,13 +124,13 @@
       <div id="navigation">
         <!-- Navigation Menu-->
         <ul class="navigation-menu">
-          <li><a href="#home" data-scroll="true">Inicio</a>
+          <li><a href="{{ url_for('index')}}" data-scroll="true">Inicio</a>
           </li>
-          <li><a href="nuestra-carta.html" data-scroll="true">Nuestra carta</a>
+          <li><a href="{{ url_for('carta')}}" data-scroll="true">Nuestra carta</a>
           </li>
-          <li><a href="nosotros.html" data-scroll="true">Nuestros locales</a>
+          <li><a href="{{ url_for('nosotros')}}" data-scroll="true">Nuestros locales</a>
           </li>
-          <li><a href="nosotros.html" data-scroll="true">Nosotros</a>
+          <li><a href="{{ url_for('nosotros')}}" data-scroll="true">Nosotros</a>
           </li>
 
 
@@ -164,9 +165,10 @@
                 <h3 class="upper text-center">Misión<span class="red-dot"></span></h3>
 
               </div>
-              <p class="alt-paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam laborum vitae
-                sapiente deleniti non! Ab sequi natus sapiente, nam ullam cum quo laborum, consequuntur aspernatur
-                consequatur, inventore dignissimosse harumoram repellat.
+              <p class="alt-paragraph">El rincón del cuy y la trucha es un recreo en crecimiento que actualmente tiene un local
+                principal en el Cerro Acuchimay y otro en la picota, que ofrece platillos tradicionales a base
+                de cuy, trucha y chancho. También ofrece bebidas tradicionales como la chicha de Ccora,
+                maíz morado y todo tipo de refrescos.
               </p>
             </div>
             <div class="col-md-6">
@@ -175,9 +177,10 @@
                   <h3 class="upper  text-center">Visión<span class="red-dot"></span></h3>
 
                 </div>
-                <p class="alt-paragraph">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita, vitae earum
-                  odio accusantium magni fugit odit! Temporibus in pariatur sunt impedit iusto illo, laboriosam soluta
-                  possimus aspernatur doloremque enim sapiente!
+                <p class="alt-paragraph">El rincón del cuy y la trucha es un recreo en crecimiento que actualmente tiene un local
+                  principal en el Cerro Acuchimay y otro en la picota, que ofrece platillos tradicionales a base
+                  de cuy, trucha y chancho. También ofrece bebidas tradicionales como la chicha de Ccora,
+                  maíz morado y todo tipo de refrescos.
                 </p>
 
               </blockquote>
@@ -205,44 +208,28 @@
             class="owl-carousel">
             <div class="team-member mt-25">
               <div class="team-image">
-                <img src="images/local/local_1.jpg" alt="">
+                <img src="{{ url_for('static', filename= 'images/local/local_1.jpg')}}" alt="">
               </div>
               <div class="team-info">
-                <h3>Arya Stark</h3><span>Founder and CEO</span>
+                <h3>Local 1</h3><span>Cerro Acuchimay</span>
               </div>
               <div class="team-social">
                 <ul>
-                  <li><a href="#" target="blank"><i class="ti-facebook"></i></a>
-                  </li>
-                  <li><a href="#" target="blank"><i class="ti-twitter-alt"></i></a>
-                  </li>
-                  <li><a href="#" target="blank"><i class="ti-linkedin"></i></a>
-                  </li>
-                  <li><a href="#" target="blank"><i class="ti-instagram"></i></a>
-                  </li>
-                  <li><a href="#" target="blank"><i class="ti-dribbble"></i></a>
+                  <li><a href="#" target="blank"><i class="ti-google"></i></a>
                   </li>
                 </ul>
               </div>
             </div>
             <div class="team-member mt-25">
               <div class="team-image">
-                <img src="images/local/local_2.jpg" alt="">
+                <img src="{{ url_for('static', filename= 'images/local/local_2.jpg')}}" alt="">
               </div>
               <div class="team-info">
-                <h3>Jesse Pinkman</h3><span>Architect</span>
+                <h3>Local 2</h3><span>Cerro Acuchimay</span>
               </div>
               <div class="team-social">
                 <ul>
-                  <li><a href="#" target="blank"><i class="ti-facebook"></i></a>
-                  </li>
-                  <li><a href="#" target="blank"><i class="ti-twitter-alt"></i></a>
-                  </li>
-                  <li><a href="#" target="blank"><i class="ti-linkedin"></i></a>
-                  </li>
-                  <li><a href="#" target="blank"><i class="ti-instagram"></i></a>
-                  </li>
-                  <li><a href="#" target="blank"><i class="ti-dribbble"></i></a>
+                  <li><a href="#" target="blank"><i class="ti-google"></i></a>
                   </li>
                 </ul>
               </div>
@@ -292,24 +279,8 @@
             </div>
           </div>
         </div>
-        <div class="col-md-4 col-md-offset-2">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="widget">
-                <h6 class="upper">Suscribete</h6>
-                <p>Ingresa para saber las ultimas noticas.</p>
-                <div class="footer-newsletter">
-                  <form data-mailchimp="true" class="inline-form">
-                    <div class="input-group">
-                      <input type="email" name="email" placeholder="Tu email" class="form-control"><span
-                        class="input-group-btn"><button type="submit" data-loading-text="Loading..."
-                          class="btn btn-color">Suscribete</button></span>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="col-md-4 col-md-offset-2 text-right">
+          <img src="{{ url_for('static', filename= 'images/logo positivo.png')}}" alt="" class="logo-light">
         </div>
       </div>
       <!-- end of row-->

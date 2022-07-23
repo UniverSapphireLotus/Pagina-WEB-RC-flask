@@ -34,7 +34,6 @@ def login():
     return render_template('login.html',  carrito= carrito, carrito_size= len(carrito), totalCompra= totalCarrtio())
 
 
-
 @app.route('/nuestra-carta.html/')
 def carta():
     menu={} 

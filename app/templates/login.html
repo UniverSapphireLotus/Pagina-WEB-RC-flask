@@ -48,7 +48,7 @@
       <div class="container">
         <!-- Logo container-->
         <div class="logo">
-          <a href="index.html">
+          <a href="{{ url_for('index')}}">
             <img src="{{ url_for('static', filename= 'images/logo positivo.png')}}" alt="" class="logo-light">
             <img src="{{ url_for('static', filename= 'images/logo negativo.png')}}" alt="" class="logo-dark">
           </a>
@@ -85,10 +85,11 @@
                   </li>
                   {% endfor %}                
                 </ul>
-                <p><a href="#" class="btn btn-color btn-block btn-sm">Checkout</a>
+                <p><a href="{{ url_for('shopping')}}" class="btn btn-color btn-block btn-sm">Checkout</a>
                 </p>
               </div>
             </div>
+  
             <!-- End shopping cart-->
           </div>
           <div class="menu-item">
@@ -99,9 +100,9 @@
               </a>
               <div class="shopping-cart">
   
-                <p><a href="login.html" class="btn btn-color-out btn-block btn-sm">Ingresar</a>
+                <p><a href="{{ url_for('login')}}"class="btn btn-color-out btn-block btn-sm">Ingresar</a>
                 </p>
-                <p><a href="login.html" class="btn btn-color-out btn-block btn-sm">Registrarse</a>
+                <p><a href="{{ url_for('login')}}" class="btn btn-color-out btn-block btn-sm">Registrarse</a>
                 </p>
               </div>
             </div>
@@ -122,13 +123,13 @@
         <div id="navigation">
           <!-- Navigation Menu-->
           <ul class="navigation-menu">
-            <li><a href="#home" data-scroll="true">Inicio</a>
+            <li><a href="{{ url_for('index')}}" data-scroll="true">Inicio</a>
             </li>
-            <li><a href="nuestra-carta.html" data-scroll="true">Nuestra carta</a>
+            <li><a href="{{ url_for('carta')}}" data-scroll="true">Nuestra carta</a>
             </li>
-            <li><a href="nosotros.html" data-scroll="true">Nuestros locales</a>
+            <li><a href="{{ url_for('nosotros')}}" data-scroll="true">Nuestros locales</a>
             </li>
-            <li><a href="nosotros.html" data-scroll="true">Nosotros</a>
+            <li><a href="{{ url_for('nosotros')}}" data-scroll="true">Nosotros</a>
             </li>
   
   
