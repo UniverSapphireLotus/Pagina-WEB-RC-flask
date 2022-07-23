@@ -14,6 +14,11 @@ app= Flask(__name__)
 
 #engine= sa.create_engine('mssql+pyodbc://user:password@server/database')
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
+carrito= []
+carrito.clear()
+
+login=False
+admin=False
 
 params = urllib.parse.quote_plus("DRIVER={SQL Server Native Client 11.0};"
                                  "SERVER=DESKTOP-GATG0PQ\SAKINIKAIDO;"
@@ -22,12 +27,11 @@ params = urllib.parse.quote_plus("DRIVER={SQL Server Native Client 11.0};"
                                  "PWD=saki")
 
 engine = create_engine("mssql+pyodbc:///?odbc_connect={}".format(params))
-carrito= []
-carrito.clear()
+
 
 @app.route('/')
 def index():
-    return render_template('index.html',  carrito= carrito, carrito_size= len(carrito), totalCompra= totalCarrtio())
+    return render_template('index.html',  carrito= carrito, carrito_size= len(carrito), totalCompra= totalCarrtio(), log= login, admin=admin)
 
 @app.route('/login.html/')
 def login():
